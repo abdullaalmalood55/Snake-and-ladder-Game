@@ -1,0 +1,89 @@
+body {
+  background-color: rgb(10, 112, 112);
+}
+header {
+  color: rgb(160, 20, 20);
+  text-align: center;
+  font-size: 24px;
+}
+/*
+.Gameboard {
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+
+  flex-wrap: wrap-reverse;
+  max-width: 650px;
+
+  justify-content: flex-end;
+}
+
+.square {
+  width: 9%;
+  aspect-ratio: 1/1;
+  border: 3px solid black;
+  font-size: 20px;
+  text-align: center;
+  justify-content: flex-end;
+}
+*/
+.Gameboard {
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column-reverse; /* So row 1 is at bottom */
+  position: relative;
+  border: 10px solid black;
+  width: 900px;
+}
+.player {
+  width: 20px;
+  height: 20px;
+  background-color: yellow;
+  border-radius: 50%;
+
+  position: absolute; /* so we can move it */
+  transition: all 0.3s ease-in-out; /* smooth movement */
+}
+.row {
+  display: flex;
+}
+
+.row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.square {
+  width: 300px;
+  height: 50px;
+  border: 2px solid black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+/*.square[id="11"] {
+  background-color: red;
+  .square:nth-child(11) {
+  background-color: yellow;
+}
+}*/
+.square:nth-child(odd) {
+  background-color: rgb(189, 8, 8);
+}
+.square:nth-child(even) {
+  background-color: white;
+}
+
+.playAgain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 50px;
+
+  border: 3px solid black;
+}
