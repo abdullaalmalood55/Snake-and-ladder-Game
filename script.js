@@ -16,6 +16,6 @@ const updateboard = () => {
 
   console.log(board)
   squares[0].appendChild(players)
-}
+} /** */
 
 updateboard()
