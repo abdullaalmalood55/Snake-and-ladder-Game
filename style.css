@@ -1,0 +1,81 @@
+body {
+  background-color: rgb(10, 112, 112);
+  margin: 0;
+}
+h1 {
+  color: rgb(160, 20, 20);
+  text-align: center;
+  font-size: 24px;
+}
+
+.Gameboard {
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column-reverse; /* So row 1 is at bottom */
+
+  position: relative;
+  border: 3px solid black;
+  width: 600px;
+}
+/*.player[id="0"] {*/
+
+.row {
+  display: flex;
+}
+
+.row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.square {
+  width: 400px;
+  height: 50px;
+  border: 3px solid black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30px;
+  font-style: italic;
+}
+
+.square:nth-child(odd) {
+  background-color: rgb(189, 8, 8);
+}
+.square:nth-child(even) {
+  background-color: white;
+}
+
+.restart-options {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+
+  margin-top: 50px;
+}
+.playAgain {
+  margin-right: 40px;
+}
+.player {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(231, 231, 39);
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-left: 35px;
+  margin-bottom: 25px;
+
+  position: absolute; /* so we can move it */
+  transition: all 0.3s ease-in-out; /* smooth movement */
+}
+
+.game-info {
+  display: flex; /* put children side by side */
+  justify-content: flex-start; /* center horizontally */
+  align-items: flex-start; /* align top edges */
+  gap: 20px; /* spacing between dice and board */
+  margin-top: 20px;
+}
