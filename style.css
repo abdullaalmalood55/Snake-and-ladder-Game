@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(10, 112, 112);
+  background-color: white;
   margin: 0;
 }
 h1 {
@@ -73,9 +73,40 @@ h1 {
 }
 
 .game-info {
-  display: flex; /* put children side by side */
-  justify-content: flex-start; /* center horizontally */
-  align-items: flex-start; /* align top edges */
-  gap: 20px; /* spacing between dice and board */
+  position: absolute;
+  height: 500px;
+  width: 600px;
+  padding: 20px;
+
+  box-sizing: border-box;
+  margin: 20px;
+  word-wrap: break-word;
+}
+.dice-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 100px;
+}
+.dice {
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  font-size: bold;
+  font-size: 24px;
+  background-color: rgb(76, 197, 106);
+  color: rgb(255, 255, 255);
+}
+.dice-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border: 3px solid gray;
   margin-top: 20px;
+  margin-left: 120px;
+  text-align: center;
+  font-size: 150px;
 }
