@@ -1,138 +1,140 @@
-const players = document.querySelector(".player")
+const players = document.querySelectorAll(".player")
 const squares = document.querySelectorAll(".square")
+const winnerMessage = document.querySelector(".winner-message")
+const winScore = document.querySelectorAll(".column")
 const Dice = document.querySelector(".dice")
 const diceValue = document.querySelector(".dice-value")
-const gameMessage = document.querySelector(".game-message")
-const board = []
-let playerposition = 0
-const boardlength = () => {
-  for (let i = 0; i < 100; i++) {
-    board.push(i + 1)
-  }
-}
+const playersMessage = document.querySelector(".players-message")
+const playAgain = document.querySelector(".playAgain")
+const reset = document.querySelector(".reset")
+let playerposition = [0, 0, 0, 0]
+let scoreContainer = [0, 0, 0, 0]
+let currentPlayer = 0
+const totalPlayers = players.length
 
-const updateboard = () => {
-  boardlength()
-  board.forEach((square, index) => {
-    square[index] = board[index]
+//This function sets the players on square number 1 of gameboard
+const setPosition = () => {
+  players.forEach((player, index) => {
+    squares[0].appendChild(player)
+    playerposition[index] = 0
   })
-} /** */
-squares[playerposition].appendChild(players)
+}
+
+const updateScore = (accumulator) => {
+  scoreContainer.forEach((square, index) => {
+    winScore[index] = scoreContainer[index[accumulator]]
+    accumulator++
+  })
+}
+
 const RollTheDice = () => {
-  const roll = Math.floor(Math.random() * 6) + 1 // 1–6
+  const roll = Math.floor(Math.random() * 6) + 1
   diceValue.innerText = roll
+  let index = currentPlayer
 
-  // Check if move would go beyond 100
-  if (playerposition + roll > 99) {
-    return
+  let newPos = playerposition[index] + roll
+  if (newPos > 99) {
+    newPos = playerposition[index]
   }
 
-  // Update player position
-  playerposition += roll
+  playerposition[index] = newPos
 
-  // Check for Winner
-  if (playerposition >= 99) {
-    squares[playerposition].appendChild(players)
+  //snakes
+  if (playerposition[index] === 15) {
+    playerposition[index] = 5
+  } else if (playerposition[index] === 52) {
+    playerposition[index] = 33
+  } else if (playerposition[index] === 61) {
+    playerposition[index] = 18
+  } else if (playerposition[index] === 73) {
+    playerposition[index] = 30
+  } else if (playerposition[index] === 86) {
+    playerposition[index] = 23
+  } else if (playerposition[index] === 97) {
+    playerposition[index] = 99
+  }
+  //Ladders
+  else if (playerposition[index] === 3) {
+    playerposition[index] = 13
+  } else if (playerposition[index] === 8) {
+    playerposition[index] = 30
+  } else if (playerposition[index] === 19) {
+    playerposition[index] = 37
+  } else if (playerposition[index] === 27) {
+    playerposition[index] = 83
+  } else if (playerposition[index] === 35) {
+    playerposition[index] = 43
+  } else if (playerposition[index] === 39) {
+    playerposition[index] = 41
+  } else if (playerposition[index] === 50) {
+    playerposition[index] = 66
+  } else if (playerposition[index] === 70) {
+    playerposition[index] = 90
+  } else if (playerposition[index] === 79) {
+    playerposition[index] = 99
+  }
+
+  squares[playerposition[index]].appendChild(players[index])
+
+  // check winner
+  if (playerposition[index] === 99) {
+    let accumulator = 0
+    updateScore(accumulator)
+    playersMessage.innerText = `🏆 Player ${index + 1} wins the game!`
+    scoreContainer[index] += accumulator + 1
+    winScore[index].innerText = scoreContainer[index]
+    accumulator++
     Dice.disabled = true
-    diceValue.innerText = ""
-    gameMessage.innerHTML = "We have a winner"
+    playAgain.disabled = false
+    reset.disabled = false
+    playAgainfunction()
+    resetfunction()
+  } else if (playerposition[index] != 99 && playerposition[index] != 0) {
+    playAgain.disabled = true
+    reset.disabled = true
+  }
+  // show message
+  playersMessage.innerText = `🎲 Player ${
+    index + 1
+  } rolled ${roll} and moved to ${playerposition[index] + 1}`
+  if (roll === 6) {
+    playersMessage.innerText = `Player ${index + 1} gets another chance`
     return
   }
-  //Long-snake
-  if (playerposition === 61) {
-    playerposition = 18
-    squares[playerposition].appendChild(players)
+  currentPlayer++
+
+  if (currentPlayer >= totalPlayers) {
+    currentPlayer = 0
   }
-  //Short-snake
-  else if (playerposition === 36) {
-    playerposition = 15
-
-    squares[playerposition].appendChild(players)
-  }
-  //Long-Ladder
-  else if (playerposition === 27) {
-    playerposition = 83
-
-    squares[playerposition].appendChild(players)
-  }
-
-  //Short-Ladder
-  else if (playerposition === 8) {
-    playerposition = 30
-
-    squares[playerposition].appendChild(players)
-  }
-
-  //Short-Ladder
-  else if (playerposition === 3) {
-    playerposition = 13
-
-    squares[playerposition].appendChild(players)
-  }
-
-  //Short-Ladder
-  else if (playerposition === 66) {
-    playerposition = 50
-
-    squares[playerposition].appendChild(players)
-  }
-
-  //Short-Ladder
-  else if (playerposition === 35) {
-    playerposition = 43
-
-    squares[playerposition].appendChild(players)
-  }
-
-  //Short-Ladder
-  else if (playerposition === 70) {
-    playerposition = 90
-
-    squares[playerposition].appendChild(players)
-  } else if (playerposition === 19) {
-    playerposition = 37
-
-    squares[playerposition].appendChild(players)
-  } else if (playerposition === 39) {
-    playerposition = 41
-
-    squares[playerposition].appendChild(players)
-  } else if (playerposition === 79) {
-    playerposition = 99
-
-    squares[playerposition].appendChild(players)
-  } else if (playerposition === 52) {
-    playerposition = 33
-
-    squares[playerposition].appendChild(players)
-  } else if (playerposition === 86) {
-    playerposition = 23
-
-    squares[playerposition].appendChild(players)
-  } else if (playerposition === 97) {
-    playerposition = 62
-
-    squares[playerposition].appendChild(players)
-  } else if (playerposition === 15) {
-    playerposition = 5
-
-    squares[playerposition].appendChild(players)
-  } else if (playerposition === 73) {
-    playerposition = 30
-
-    squares[playerposition].appendChild(players)
-  }
-  squares[playerposition].appendChild(players)
-} //end of function
-Dice.addEventListener("click", () => RollTheDice())
-
-//End of add event listener
-
-const render = () => {
-  updateboard()
 }
 
+Dice.addEventListener("click", RollTheDice)
 const gameInit = () => {
-  render()
+  setPosition()
+  playersMessage.innerText = ""
+  playAgain.disabled = true
+  reset.disabled = true
 }
+
 gameInit()
+
+const playAgainfunction = () => {
+  playAgain.addEventListener("click", () => {
+    setPosition()
+    Dice.disabled = false
+    diceValue.innerText = ""
+  })
+}
+
+const resetfunction = () => {
+  reset.addEventListener("click", () => {
+    currentPlayer = 0
+    setPosition()
+    winScore[0].innerText = ""
+    winScore[1].innerText = ""
+    winScore[2].innerText = ""
+    winScore[3].innerText = ""
+    Dice.disabled = false
+    diceValue.innerText = ""
+  })
+}

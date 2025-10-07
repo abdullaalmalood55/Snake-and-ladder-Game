@@ -59,7 +59,7 @@ h1 {
 .playAgain {
   margin-right: 40px;
 }
-.player {
+.player[id="0"] {
   width: 20px;
   height: 20px;
   background-color: rgb(231, 231, 39);
@@ -70,15 +70,77 @@ h1 {
 
   position: absolute;
 }
+.player[id="1"] {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(26, 189, 61);
+
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-left: 35px;
+  margin-top: 25px;
+
+  position: absolute;
+}
+.player[id="2"] {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(34, 131, 221);
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-right: 35px;
+  margin-bottom: 25px;
+
+  position: absolute;
+}
+.player[id="3"] {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(165, 83, 16);
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-right: 35px;
+  margin-top: 25px;
+
+  position: absolute;
+}
 .game-message {
   margin-left: 120px;
 }
+
+.Results {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  height: 200px;
+  width: 300px;
+
+  word-wrap: break-word;
+  margin-left: 1050px;
+  text-align: center;
+}
+
+.score-table {
+  display: flex;
+  flex-direction: row;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  font-size: 24px;
+}
 .game-info {
   position: absolute;
-  height: 500px;
+  height: 300px;
   width: 500px;
   padding: 20px;
-  margin: 20px;
 
   word-wrap: break-word;
 }
@@ -88,10 +150,11 @@ h1 {
   justify-content: center;
   align-items: center;
   padding-right: 100px;
+  margin-right: 100px;
 }
 .dice {
   margin-top: 50px;
-  margin-left: 30px;
+  margin-right: 50px;
   height: 50px;
   width: 100px;
   text-align: center;
@@ -108,7 +171,7 @@ h1 {
   height: 200px;
   border: 3px solid gray;
   margin-top: 20px;
-  margin-left: 120px;
+  margin-left: 20px;
   text-align: center;
   font-size: 150px;
 }
