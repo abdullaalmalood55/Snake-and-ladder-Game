@@ -117,13 +117,14 @@ h1 {
   width: 300px;
 
   word-wrap: break-word;
-  margin-left: 1050px;
+  margin-left: 1200px;
   text-align: center;
 }
 
 .score-table {
   display: flex;
   flex-direction: row;
+  ft: 100px;
 }
 
 .score {
@@ -145,12 +146,17 @@ h1 {
   word-wrap: break-word;
 }
 .dice-container {
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-right: 100px;
   margin-right: 100px;
+}
+
+.players-message {
+  position: absolute;
 }
 .dice {
   margin-top: 50px;
@@ -299,4 +305,18 @@ h1 {
   width: 80px;
   margin-left: 200px;
   rotate: -35deg;
+}
+.reset {
+  height: 50px;
+  width: 100px;
+  background-color: rgb(76, 197, 106);
+  font-weight: bolder;
+  color: white;
+}
+.playAgain {
+  height: 50px;
+  width: 100px;
+  background-color: rgb(76, 197, 106);
+  font-weight: bolder;
+  color: white;
 }
