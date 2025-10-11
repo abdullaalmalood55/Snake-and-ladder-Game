@@ -1,147 +1,151 @@
-const players = document.querySelectorAll(".player")
-const squares = document.querySelectorAll(".square")
-const winnerMessage = document.querySelector(".winner-message")
-const winScore = document.querySelectorAll(".column")
-const Dice = document.querySelector(".dice")
-const diceValue = document.querySelector(".dice-value")
-const playersMessage = document.querySelector(".players-message")
-const playAgain = document.querySelector(".playAgain")
-const reset = document.querySelector(".reset")
-let playerposition = [0, 0, 0, 0]
+const Player = document.querySelectorAll(".player")
+const Square = document.querySelectorAll(".square")
+const scoreValue = document.querySelectorAll(".column")
+const Dice = document.querySelector(".diceButton")
+const diceValue = document.querySelector(".diceValue")
+const Message = document.querySelector(".gameMessage")
+const Rematch = document.querySelector(".playAgain")
+const Reset = document.querySelector(".reset")
+let playerPosition = [0, 0, 0, 0]
 let scoreContainer = [0, 0, 0, 0]
 let currentPlayer = 0
-const totalPlayers = players.length
-
+const totalPlayers = Player.length
 //This function sets the players on square number 1 of gameboard
 const setPosition = () => {
-  players.forEach((player, index) => {
-    squares[0].appendChild(player)
-    playerposition[index] = 0
+  Player.forEach((players, index) => {
+    Square[0].appendChild(players)
+    playerPosition[index] = 0
   })
 }
-
+// Function to update the score each time a player wins
 const updateScore = (accumulator) => {
   scoreContainer.forEach((square, index) => {
-    winScore[index] = scoreContainer[index[accumulator]]
+    scoreValue[index] = scoreContainer[index[accumulator]]
     accumulator++
   })
 }
-
+//
 const RollTheDice = () => {
+  //Roll contains random values between 1 and 6
   const roll = Math.floor(Math.random() * 6) + 1
+  //diceValue displays the value of roll in its container
   diceValue.innerText = roll
   let index = currentPlayer
-
-  let positionSteps = playerposition[index]
-  let newPos = playerposition[index] + roll
+  let positionSteps = playerPosition[index]
+  let newPos = playerPosition[index] + roll
   if (newPos > 99) {
-    newPos = playerposition[index]
-    playersMessage.innerText = ""
+    newPos = playerPosition[index]
+    Message.innerText = ""
   }
 
-  //playerposition[index] = newPos
+  //Runs a timer
   const delay = setInterval(() => {
     positionSteps++
-    playerposition[index] = positionSteps
-    squares[positionSteps].appendChild(players[index])
+    playerPosition[index] = positionSteps
+    Square[positionSteps].appendChild(Player[index])
     if (positionSteps >= newPos) {
+      //Cancel the timer
       clearInterval(delay)
 
-      //snakes
-      if (playerposition[index] === 15) {
+      //Snakes
+      if (playerPosition[index] === 15) {
         playerposition[index] = 5
-      } else if (playerposition[index] === 52) {
-        playerposition[index] = 33
-      } else if (playerposition[index] === 61) {
-        playerposition[index] = 18
-      } else if (playerposition[index] === 73) {
-        playerposition[index] = 30
-      } else if (playerposition[index] === 86) {
-        playerposition[index] = 23
-      } else if (playerposition[index] === 97) {
-        playerposition[index] = 99
-      }
-      //Ladders
-      else if (playerposition[index] === 3) {
-        playerposition[index] = 13
-      } else if (playerposition[index] === 8) {
-        playerposition[index] = 30
-      } else if (playerposition[index] === 19) {
-        playerposition[index] = 37
-      } else if (playerposition[index] === 27) {
-        playerposition[index] = 83
-      } else if (playerposition[index] === 35) {
-        playerposition[index] = 43
-      } else if (playerposition[index] === 39) {
-        playerposition[index] = 41
-      } else if (playerposition[index] === 50) {
-        playerposition[index] = 66
-      } else if (playerposition[index] === 70) {
-        playerposition[index] = 90
-      } else if (playerposition[index] === 79) {
-        playerposition[index] = 99
+      } else if (playerPosition[index] === 52) {
+        playerPosition[index] = 33
+      } else if (playerPosition[index] === 61) {
+        playerPosition[index] = 18
+      } else if (playerPosition[index] === 73) {
+        playerPosition[index] = 30
+      } else if (playerPosition[index] === 86) {
+        playerPosition[index] = 23
+      } else if (playerPosition[index] === 97) {
+        playerPosition[index] = 99
       }
 
-      squares[playerposition[index]].appendChild(players[index])
+      //Ladders
+      else if (playerPosition[index] === 3) {
+        playerPosition[index] = 13
+      } else if (playerPosition[index] === 8) {
+        playerPosition[index] = 30
+      } else if (playerPosition[index] === 19) {
+        playerPosition[index] = 37
+      } else if (playerPosition[index] === 27) {
+        playerPosition[index] = 83
+      } else if (playerPosition[index] === 35) {
+        playerPosition[index] = 43
+      } else if (playerPosition[index] === 39) {
+        playerPosition[index] = 41
+      } else if (playerPosition[index] === 50) {
+        playerPosition[index] = 66
+      } else if (playerPosition[index] === 70) {
+        playerPosition[index] = 90
+      } else if (playerPosition[index] === 79) {
+        playerPosition[index] = 99
+      }
+      /* All players positions are stored in the
+      appropriate index of playerPosition array
+      and displayed in the square board
+      */
+      Square[playerPosition[index]].appendChild(Player[index])
 
       // check winner
-      if (playerposition[index] === 99) {
+      if (playerPosition[index] === 99) {
         let accumulator = 0
+        /* Invoke updateScore and pass the accumulator
+        variable as a parameter */
         updateScore(accumulator)
-        playersMessage.innerText = `We have an winner `
+        Message.innerText = `We have an winner `
         scoreContainer[index] += accumulator + 1
-        winScore[index].innerText = scoreContainer[index]
+        scoreValue[index].innerText = scoreContainer[index]
         accumulator++
         Dice.disabled = true
-        playAgain.disabled = false
-        reset.disabled = false
-        playAgainfunction()
-        resetfunction()
-      } else if (playerposition[index] != 99 && playerposition[index] != 0) {
-        playAgain.disabled = true
-        reset.disabled = true
+        Rematch.disabled = false
+        Reset.disabled = false
+        rematchFunction()
+        resetFunction()
+      } else if (playerPosition[index] != 99 && playerPosition[index] != 0) {
+        Rematch.disabled = true
+        Reset.disabled = true
       }
       // show message
 
       if (index === 0 && roll != 6) {
-        playersMessage.innerText = `Yellow rolled ${roll} and moved to ${
-          playerposition[index] + 1
+        Message.innerText = `Yellow rolled ${roll} and moved to ${
+          playerPosition[index] + 1
         }`
       } else if (index === 0 && roll === 6) {
-        playersMessage.innerText = `Yellow rolled ${roll} and moved to ${
-          playerposition[index] + 1
+        Message.innerText = `Yellow rolled ${roll} and moved to ${
+          playerPosition[index] + 1
         } and got another chance`
       } else if (index === 1 && roll != 6) {
-        playersMessage.innerText = `Green rolled ${roll} and moved to ${
-          playerposition[index] + 1
+        Message.innerText = `Green rolled ${roll} and moved to ${
+          playerPosition[index] + 1
         }`
       } else if (index === 1 && roll === 6) {
-        playersMessage.innerText = `Green rolled ${roll} and moved to ${
-          playerposition[index] + 1
+        Message.innerText = `Green rolled ${roll} and moved to ${
+          playerPosition[index] + 1
         } and got another chance`
         return
       } else if (index === 2 && roll != 6) {
-        playersMessage.innerText = `Blue rolled ${roll} and moved to ${
-          playerposition[index] + 1
+        Message.innerText = `Blue rolled ${roll} and moved to ${
+          playerPosition[index] + 1
         }`
       } else if (index === 2 && roll === 6) {
-        playersMessage.innerText = `Blue rolled ${roll} and moved to ${
-          playerposition[index] + 1
+        Message.innerText = `Blue rolled ${roll} and moved to ${
+          playerPosition[index] + 1
         } and got another chance`
         return
       } else if (index === 3 && roll != 6) {
-        playersMessage.innerText = `Brown rolled ${roll} and moved to ${
-          playerposition[index] + 1
+        Message.innerText = `Brown rolled ${roll} and moved to ${
+          playerPosition[index] + 1
         }`
       } else if (index === 3 && roll === 6) {
-        playersMessage.innerText = `Brown rolled ${roll} and moved to ${
-          playerposition[index] + 1
+        Message.innerText = `Brown rolled ${roll} and moved to ${
+          playerPosition[index] + 1
         } and got another chance`
         return
       }
-
       currentPlayer++
-
       if (currentPlayer >= totalPlayers) {
         currentPlayer = 0
       }
@@ -150,34 +154,33 @@ const RollTheDice = () => {
 }
 
 Dice.addEventListener("click", RollTheDice)
+//Function to initiate the game
 const gameInit = () => {
   setPosition()
-  playersMessage.innerText = ""
-  playAgain.disabled = true
-  reset.disabled = true
+  Message.innerText = ""
+  Rematch.disabled = true
+  Reset.disabled = true
 }
-
 gameInit()
-
-const playAgainfunction = () => {
-  playAgain.addEventListener("click", () => {
+const rematchFunction = () => {
+  Rematch.addEventListener("click", () => {
     setPosition()
     Dice.disabled = false
     diceValue.innerText = ""
-    playersMessage.innerText = ""
+    Message.innerText = ""
   })
 }
 
-const resetfunction = () => {
-  reset.addEventListener("click", () => {
+const resetFunction = () => {
+  Reset.addEventListener("click", () => {
     currentPlayer = 0
     setPosition()
-    winScore[0].innerText = ""
-    winScore[1].innerText = ""
-    winScore[2].innerText = ""
-    winScore[3].innerText = ""
+    scoreValue[0].innerText = ""
+    scoreValue[1].innerText = ""
+    scoreValue[2].innerText = ""
+    scoreValue[3].innerText = ""
     Dice.disabled = false
     diceValue.innerText = ""
-    playersMessage.innerText = ""
+    Message.innerText = ""
   })
 }

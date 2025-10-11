@@ -1,9 +1,50 @@
-# Snake-and-ladder-Game
-I will be building a board starting from start point to end point and players will be represented by a circle or a symbol. The game rule is that a dice is rolled and player will make movements to as number of steps as he find the rolled dice. If he is a lucky he might climb a ladder saves him steps. If he is unlucky a snake will lose him steps.
-<br/>1. There will be 2 to 4 players playing this game. Each Player is diffrentiated from the other player with distinguished from other player with a different color.
-<br/>2. There will be a board containing startpoint and endpoint and each player will waits its turn and when its turn comes a dice will be rollen and what number it stops in, the player will make a movement and will move some steps.
-<br/>3. If a dice stops at six, the player who its his turn will move six steps and will have a chance to make the dice roll again. 
-<br/>4. A player might have a bonuses as well as same obstrucles. In some square points there will be ladders. If the player stops at the first step of the ladder, he will climb the ladder and skip some steps. 
-<br/>However if a player stops at a snake face symbol, he will be eaten and fall down some steps and he will have to make movements again to be keep up with his last progress and reaches to end point.
-<br/>5. If a player have made to the steps before the endpoint, the dice that rolls and his turn should stop at exact same number that will take you to endpoint to less or the dice will not move the player any further steps. 
-<br/>-For example let say that the board contain 100 steps or points and the player reached point 96. He will have 4 steps to reach to endpoint so if the dice stops at 4 or less he will move but if the dice stops at 5 or 6 he will not move.
+# <h1 style="text-align:center;font-size:24;font-family:times-new-roman;">**Snakes and Ladders**</h1>
+## <h2 style="font-size:22;font-family:times-new-roman;">**Date: 11 / 10 / 2025**</br></br> ***By: Abdulla AlMalood***</h2>
+### Social Links: </br>[Linkedin](https://www.linkedin.com/in/abdulla-almalood-712727271/) [Github](https://github.com/abdullaalmalood55)
+
+<br/>
+
+#### **Description**
+Snake and ladder game consist of players, board and dice. The board contains 100 squares numbered from 0 to 100 and images of of snakes and ladders with different sizes. The players are represented in symbols or circles that are distinctive from each other and identified uniquely with different colors or marks. The dice contains six faces or values numbered from one to six.
+
+#### **Game Rules**
+- Each player have its turn to roll the rice and make movements from a position to other based on the dice value and the first player to reach 100 will be considered as winner. The higher value a player gets from a roll, the more positions he will be passing making hom closer to the win the game. In addition, there is a bonus for the player that rolls a dice and his roll stops the dice at 6, will be granted a chance to roll the dice again benefiting him to make more forward movements.
+<br/>
+
+- Ladders are also bonuses, lifting a player from position to a newer position in upper row. The player who stops at a bottom of a ladder, with climb the ladder until it reaches the top of the ladder.
+<br/>
+
+- Snakes are traps and obstacles. A player who stops at a position that contains a head of the snake, will be thrown down to the tail of the snake making the player to lose his position and be farther from winning.
+<br/>
+
+- If a player passes position 95 and in his turn the dice stops at value more than he need, then he will not make a movement and the next player will have his turn unless he gets 6, he will be given a retry to roll the dice again and seek his chance. For example, if a player rolls the dice at position 97 and gets 4 or more, his turn will be consumed and the next player will gets his chance to roll the dice.
+
+
+#### **Technologies Used**
+- Front End:
+1. Html
+2. CSS
+3. Javascript
+- Development Tools:
+1. Git bash
+2. VS Code
+
+
+
+#### **Getting Started**
+- The source code was pushed to the main Github repository and can be viewed [here](https://github.com/abdullaalmalood55/Snake-and-ladder-Game)
+- The project was deployed and can be used in [Surge](http://snakes_and_ladders.surge.sh/)
+
+#### **Screenshots**
+![SnakeAndLadders](./Snake%20and%20ladders.PNG)
+</br>
+
+![Dice](./dice.PNG)
+</br>
+
+![Score](./score.PNG)
+#### **Future Updates**
+- Adding list of colors to players making the user to choose the color he prefers from the list and number of players from 2 to 4.
+- Adding night mode to the game.
+- Giving the user a choice to make a custom modification on the game like adding more rows and adding more ladders or snakes and adjusting the size of the snake or ladder.
+- Adding new modes that make the game fun and enjoyable

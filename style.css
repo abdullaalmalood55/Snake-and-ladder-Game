@@ -8,144 +8,15 @@ h1 {
   font-size: 24px;
 }
 
-.Gameboard {
-  margin: 0 auto;
-
-  display: flex;
-  flex-direction: column-reverse; /* So row 1 is at bottom */
-
-  position: relative;
-  border: 3px solid black;
-  width: 600px;
-}
-/*.player[id="0"] {*/
-
-.row {
-  display: flex;
-}
-
-.row:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-.square {
-  width: 400px;
-  height: 50px;
-  border: 3px solid black;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 30px;
-  font-style: italic;
-}
-
-.square:nth-child(odd) {
-  background-color: rgb(189, 8, 8);
-}
-.square:nth-child(even) {
-  background-color: white;
-}
-
-.restart-options {
-  display: flex;
-  flex-direction: row;
-
-  justify-content: center;
-
-  margin-top: 50px;
-}
-.playAgain {
-  margin-right: 40px;
-}
-.player[id="0"] {
-  width: 20px;
-  height: 20px;
-  background-color: rgb(231, 231, 39);
-  border: 2px solid black;
-  border-radius: 50%;
-  margin-left: 35px;
-  margin-bottom: 25px;
-
-  position: absolute;
-}
-.player[id="1"] {
-  width: 20px;
-  height: 20px;
-  background-color: rgb(26, 189, 61);
-
-  border: 2px solid black;
-  border-radius: 50%;
-  margin-left: 35px;
-  margin-top: 25px;
-
-  position: absolute;
-}
-.player[id="2"] {
-  width: 20px;
-  height: 20px;
-  background-color: rgb(34, 131, 221);
-  border: 2px solid black;
-  border-radius: 50%;
-  margin-right: 35px;
-  margin-bottom: 25px;
-
-  position: absolute;
-}
-.player[id="3"] {
-  width: 20px;
-  height: 20px;
-  background-color: rgb(165, 83, 16);
-  border: 2px solid black;
-  border-radius: 50%;
-  margin-right: 35px;
-  margin-top: 25px;
-
-  position: absolute;
-}
-.game-message {
-  margin-left: 120px;
-}
-
-.Results {
-  display: flex;
-  flex-direction: column;
-
-  position: absolute;
-  height: 200px;
-  width: 300px;
-
-  word-wrap: break-word;
-  margin-left: 1200px;
-  text-align: center;
-}
-
-.score-table {
-  display: flex;
-  flex-direction: row;
-  ft: 100px;
-}
-
-.score {
-  display: flex;
-  flex-direction: row;
-  width: 300px;
-  height: 50px;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid black;
-  font-size: 24px;
-}
-.game-info {
+/* Section 1 */
+.diceSection {
   position: absolute;
   height: 300px;
   width: 500px;
   padding: 20px;
-
   word-wrap: break-word;
 }
-.dice-container {
+.diceContainer {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
@@ -154,11 +25,11 @@ h1 {
   padding-right: 100px;
   margin-right: 100px;
 }
-
-.players-message {
+.gameMessage {
+  margin-left: 120px;
   position: absolute;
 }
-.dice {
+.diceButton {
   margin-top: 50px;
   margin-right: 50px;
   height: 50px;
@@ -169,7 +40,7 @@ h1 {
   background-color: rgb(76, 197, 106);
   color: rgb(255, 255, 255);
 }
-.dice-value {
+.diceValue {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,115 +53,115 @@ h1 {
   font-size: 150px;
 }
 
-.long-snake {
+/* Section 2 */
+.scoreSection {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  margin-top: 250px;
-  height: 300px;
-  width: 80px;
-  margin-left: 25px;
-}
-.short-snake {
-  position: absolute;
-
-  height: 150px;
-  width: 100px;
-  margin-left: 30px;
-  rotate: 45deg;
-}
-.long-ladder {
-  position: absolute;
-  margin-top: 350px;
-  margin-left: 250px;
-  height: 500px;
-  width: 100px;
-  rotate: -40deg;
-}
-.short-ladder-1 {
-  position: absolute;
-
-  height: 250px;
-  width: 100px;
-  rotate: 60deg;
-  margin-bottom: 60px;
-  margin-left: 280px;
-}
-.short-ladder-2 {
-  position: absolute;
-
-  height: 220px;
-  width: 100px;
-  margin-top: 50px;
-  margin-left: 150px;
-  margin-bottom: 90px;
-  rotate: 10deg;
-}
-.short-ladder-3 {
-  position: absolute;
-
-  height: 250px;
-  width: 100px;
-  margin-top: 150px;
-  margin-left: 180px;
-  margin-bottom: 90px;
-  rotate: 100deg;
-}
-.short-ladder-4 {
-  position: absolute;
-
-  height: 100px;
-  width: 100px;
-  margin-top: 50px;
-  rotate: 100deg;
-  margin-left: 50px;
-}
-.short-ladder-5 {
-  position: absolute;
-
-  height: 150px;
-  width: 100px;
-  margin-bottom: 200px;
-  rotate: -40deg;
-}
-.short-ladder-6 {
-  position: absolute;
-
   height: 200px;
-  width: 100px;
-  margin-bottom: 100px;
-  rotate: 20deg;
+  width: 300px;
+  word-wrap: break-word;
+  margin-left: 1200px;
+  text-align: center;
 }
-.short-ladder-7 {
-  position: absolute;
+.table {
+  display: flex;
+  flex-direction: row;
+}
+.cell {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  font-size: 24px;
+}
+/* Section 3 */
+.gameBoard {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column-reverse; /* So row 1 is at bottom */
+  position: relative;
+  border: 3px solid black;
+  width: 600px;
+}
+/* section3 row */
+.row {
+  display: flex;
+}
+/*Rows 2,4,6,8 and 10*/
+.row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+/*All 100 squares*/
+.square {
+  width: 400px;
+  height: 50px;
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30px;
+  font-style: italic;
+}
+.square:nth-child(odd) {
+  background-color: rgb(189, 8, 8);
+}
+.square:nth-child(even) {
+  background-color: white;
+}
 
-  height: 100px;
-  width: 100px;
-  margin-bottom: 50px;
-  margin-left: 50px;
-}
-.short-ladder-8 {
+/*Players**/
+/*Yellow player*/
+.player[id="0"] {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(231, 231, 39);
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-left: 35px;
+  margin-bottom: 25px;
   position: absolute;
+}
+/*Green player*/
+.player[id="1"] {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(26, 189, 61);
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-left: 35px;
+  margin-top: 25px;
+  position: absolute;
+}
+/*Blue player*/
+.player[id="2"] {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(34, 131, 221);
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-right: 35px;
+  margin-bottom: 25px;
+  position: absolute;
+}
+/*Brown player*/
+.player[id="3"] {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(165, 83, 16);
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-right: 35px;
+  margin-top: 25px;
+  position: absolute;
+}
 
-  height: 150px;
-  width: 100px;
-  margin-bottom: 100px;
-
-  rotate: -25deg;
-}
-.long-snake-right-direction {
-  position: absolute;
-  margin-top: 300px;
-  height: 400px;
-  width: 100px;
-  margin-right: 200px;
-  rotate: 25deg;
-}
-.green-snake {
-  position: absolute;
-  margin-top: 150px;
-  height: 200px;
-  width: 100px;
-}
-.green-snake-2 {
+/*Snakes*/
+.snake[id="0"] {
   position: absolute;
   margin-top: 50px;
   height: 100px;
@@ -298,7 +169,21 @@ h1 {
   margin-left: 45px;
   rotate: -60deg;
 }
-.long-snake-2 {
+.snake[id="1"] {
+  position: absolute;
+  height: 150px;
+  width: 100px;
+  margin-left: 30px;
+  rotate: 45deg;
+}
+.snake[id="2"] {
+  position: absolute;
+  margin-top: 250px;
+  height: 300px;
+  width: 80px;
+  margin-left: 25px;
+}
+.snake[id="3"] {
   position: absolute;
   margin-top: 200px;
   height: 350px;
@@ -306,14 +191,108 @@ h1 {
   margin-left: 200px;
   rotate: -35deg;
 }
-.reset {
+.snake[id="4"] {
+  position: absolute;
+  margin-top: 300px;
+  height: 400px;
+  width: 100px;
+  margin-right: 200px;
+  rotate: 25deg;
+}
+.snake[id="5"] {
+  position: absolute;
+  margin-top: 150px;
+  height: 200px;
+  width: 100px;
+}
+
+/*Ladders*/
+.ladder[id="0"] {
+  position: absolute;
+  height: 250px;
+  width: 100px;
+  rotate: 60deg;
+  margin-bottom: 60px;
+  margin-left: 280px;
+}
+.ladder[id="1"] {
+  position: absolute;
+  height: 220px;
+  width: 100px;
+  margin-top: 50px;
+  margin-left: 150px;
+  margin-bottom: 90px;
+  rotate: 10deg;
+}
+.ladder[id="2"] {
+  position: absolute;
+  height: 200px;
+  width: 100px;
+  margin-bottom: 100px;
+  rotate: 20deg;
+}
+.ladder[id="3"] {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+}
+.ladder[id="4"] {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  margin-top: 50px;
+  rotate: 100deg;
+  margin-left: 50px;
+}
+.ladder[id="5"] {
+  position: absolute;
+  height: 250px;
+  width: 100px;
+  margin-top: 150px;
+  margin-left: 180px;
+  margin-bottom: 90px;
+  rotate: 100deg;
+}
+.ladder[id="6"] {
+  position: absolute;
+  height: 150px;
+  width: 100px;
+  margin-bottom: 200px;
+  rotate: -40deg;
+}
+.ladder[id="7"] {
+  position: absolute;
+  height: 150px;
+  width: 100px;
+  margin-bottom: 100px;
+  rotate: -25deg;
+}
+.ladder[id="8"] {
+  position: absolute;
+  margin-top: 350px;
+  margin-left: 250px;
+  height: 500px;
+  width: 100px;
+  rotate: -40deg;
+}
+
+.restartOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50px;
+}
+.playAgain {
   height: 50px;
   width: 100px;
   background-color: rgb(76, 197, 106);
   font-weight: bolder;
   color: white;
+  margin-right: 40px;
 }
-.playAgain {
+.reset {
   height: 50px;
   width: 100px;
   background-color: rgb(76, 197, 106);
